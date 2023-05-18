@@ -84,12 +84,10 @@ public class Arvore<T> {
             if (filho == no) {
                 return atual; // O nó procurado é um filho do nó atual
             }
-
             NoArvore<T> pai = encontraPai(filho, no);
             if (pai != null) {
                 return pai;
             }
-
             filho = filho.getIrmao();
         }
 
