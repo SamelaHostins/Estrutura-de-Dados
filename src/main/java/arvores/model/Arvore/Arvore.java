@@ -72,6 +72,30 @@ public class Arvore<T> {
     // }
     // }
 
+    public NoArvore<T> getPai(NoArvore<T> no) {
+        return encontraPai(getRaiz(), no);
+    }
+
+    private NoArvore<T> encontraPai(NoArvore<T> atual, NoArvore<T> no) {
+
+        NoArvore<T> filho = atual.getFilho();
+
+        while (filho != null) {
+            if (filho == no) {
+                return atual; // O nó procurado é um filho do nó atual
+            }
+
+            NoArvore<T> pai = encontraPai(filho, no);
+            if (pai != null) {
+                return pai;
+            }
+
+            filho = filho.getIrmao();
+        }
+
+        return null; // nunca chegará aqui
+    }
+
     // O nível de um nó é definido como a distância entre esse nó e a raiz da árvore
     public int getNivel(T info) {
         if (vazia()) {
@@ -98,13 +122,11 @@ public class Arvore<T> {
                     // se o nó pai não tem filhos nem irmão ele
                     // Retrocede até encontrar um nó pai com irmãos ou até chegarmos à raiz.
                     // e vai decrementando os níveis contados
-                    nivel--;
                     while (noAtual != null && noAtual.getIrmao() == null) {
-                        noAtual = getRaiz();
+                        noAtual = getPai(noAtual);
                         nivel--;
                     }
-                    // Quando encontra um nó pai com irmãos, atribui o próximo irmão como noAtual
-                    // e continua o loop para percorrer os nós irmãos.
+                    // O irmão do noPai passará a ser o noAtual
                     if (noAtual != null) {
                         noAtual = noAtual.getIrmao();
                     }

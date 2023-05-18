@@ -31,14 +31,18 @@ public class TestandoArvores {
         NoArvore<String> nXX = new NoArvore<String>("XX");
         nM.inserirFilho(nXX);
 
-        // NoArvore<String> nR = new NoArvore<String>("R");
+        NoArvore<String> nR = new NoArvore<String>("R");
         NoArvore<String> nH = new NoArvore<String>("H");
-        // nH.inserirFilho(nR);
+        nH.inserirFilho(nR);
         nH.inserirFilho(nM);
 
         Arvore<String> a = new Arvore<>();
         a.setRaiz(nH);
         a.pertence("EE");
+        int nivel = a.getNivel("CC");
+        System.out.println(" O nível de CC deve ser 4: " + nivel);
+        // NoArvore<String> pai = a.getPai("XX");
+        // System.out.println(" O pai de XX, deve ser M: " + pai.getInfo());
         int m = a.menorAltura();
         System.out.println(" A ALTURA DA MENOR SUBARVORE " + m);
         boolean isBalanceada = a.isBalanceada();
