@@ -13,10 +13,7 @@ public class Arvore<T> {
     }
 
     public NoArvore<T> pertence(T info) {
-        if (this.vazia()) {
-            return null;
-        }
-        return raiz.pertence(info);
+        return vazia() ? null : getRaiz().pertence(info);
     }
 
     public boolean vazia() {
@@ -179,10 +176,8 @@ public class Arvore<T> {
 
     @Override
     public String toString() {
-        if (this.vazia()) {
-            return "<>";
-        }
-        return raiz.imprimePre();
+        return vazia() ?
+                "<>" : getRaiz().imprimePre();
     }
 
 }
