@@ -48,7 +48,7 @@ public class NoArvore<T> {
         }
     }
 
-    public int getNivelNo(T info, int alturaCorrente) {
+    protected int getNivelNo(T info, int alturaCorrente) {
         if (this.info.equals(info)) {
             alturaCorrente++;
         } else {

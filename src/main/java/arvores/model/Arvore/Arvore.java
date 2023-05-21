@@ -69,7 +69,7 @@ public class Arvore<T> {
         }
     }
 
-    public int getAlturaNoEspecifico(T info) {
+    private int getAlturaNoEspecifico(T info) {
         return getRaiz().getNivelNo(info, -1);
     }
 
