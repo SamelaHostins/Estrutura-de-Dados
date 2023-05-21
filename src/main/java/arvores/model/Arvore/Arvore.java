@@ -13,7 +13,10 @@ public class Arvore<T> {
     }
 
     public NoArvore<T> pertence(T info) {
-        return vazia() ? null : getRaiz().pertence(info);
+        if (this.vazia()) {
+            return null;
+        }
+        return raiz.pertence(info);
     }
 
     public boolean vazia() {
