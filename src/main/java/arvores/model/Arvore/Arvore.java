@@ -105,6 +105,15 @@ public class Arvore<T> {
         }
     }
 
+    public int menorAltura() {
+        if (vazia()) {
+            return -1;
+        } else {
+            NoArvore<T> raiz = getRaiz();
+            return  getMenorAltura(raiz);
+        }
+    }
+
     @Override
     public String toString() {
         if (this.vazia()) {
