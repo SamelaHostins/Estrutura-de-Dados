@@ -104,7 +104,10 @@ public class TestandoArvores {
         n7.inserirFilho(n8);
         n7.inserirFilho(n9);
         n9.inserirFilho(n10);
-        a5.pertence(2);
+        NoArvore<Integer> no2 = a5.pertence(12);
+        System.out.println(no2);
+        NoArvore<Integer> no = a5.pertence(2);
+        System.out.println(no.getInfo());
         // a5.caminho(5);
         // int grauArvore = a5.getGrau();
         // System.out.println("O grau da árvore é: " + grauArvore);

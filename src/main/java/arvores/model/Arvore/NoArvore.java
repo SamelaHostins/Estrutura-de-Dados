@@ -34,14 +34,19 @@ public class NoArvore<T> {
         if (getInfo().equals(info)) {
             return this;
         }
+
+        NoArvore<T> noEncontrado = null;
+
         NoArvore<T> filho = getFilho();
-        if (filho != null) {
-            NoArvore<T> retornoFilho = filho.pertence(info);
-            if (retornoFilho != null) {
-                return retornoFilho;
+        while (filho != null) {
+            noEncontrado = filho.pertence(info);
+            if (noEncontrado != null) {
+                return noEncontrado;
             }
+            filho = filho.getIrmao();
         }
-        return getIrmao() == null ? null : getIrmao().pertence(info);
+
+        return null;
     }
 
     public NoArvore<T> getFilho() {
