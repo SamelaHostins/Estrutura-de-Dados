@@ -113,5 +113,7 @@ public class TestandoArvores {
         System.out.println("O grau do nó 1 deve ser 3: " + grauDoNo);
         int grauDoNo2 = a5.getGrauDoNo(9);
         System.out.println("O grau do nó 9 deve ser 1: " + grauDoNo2);
+        int maiorElemento = a5.getMaiorElemento();
+        System.out.println("O maior elemento da árvore é: " + maiorElemento);
     }
 }

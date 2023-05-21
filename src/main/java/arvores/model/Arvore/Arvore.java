@@ -2,7 +2,7 @@ package arvores.model.Arvore;
 
 import java.util.Objects;
 
-public class Arvore<T> {
+public class Arvore<T extends Comparable<T>> {
 
     private NoArvore<T> raiz;
 
@@ -280,6 +280,28 @@ public class Arvore<T> {
     @Override
     public String toString() {
         return vazia() ? "<>" : getRaiz().imprimePre();
+    }
+
+    public T getMaiorElemento() {
+        if (vazia()) {
+            return null; // Retornar null se a árvore estiver vazia
+        } else {
+            T elemento = getRaiz().getInfo();
+            return this.encontrarMaiorElemento(getRaiz(), elemento);
+        }
+    }
+
+    private T encontrarMaiorElemento(NoArvore<T> no, T elemento) {
+        NoArvore<T> filho = no.getFilho();
+        while (filho != null) {
+            T maiorFilho = encontrarMaiorElemento(filho, elemento);
+            if (maiorFilho.compareTo(elemento) > 0) {
+                elemento = maiorFilho;
+            }
+            filho = filho.getIrmao();
+        }
+        
+        return elemento;
     }
 
 }
