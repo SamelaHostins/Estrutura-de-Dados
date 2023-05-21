@@ -81,7 +81,9 @@ public class TestandoArvores {
         nY.inserirFilho(nHH);
         nHH.inserirFilho(nJ);
         int b4 = a4.getAltura();
+        int testNivel3 = a4.getNivel("xy");
         System.out.println(" A altura da árvore deve ser 3: " + b4);
+        System.out.println(" O nível da árvore: " + testNivel3);
 
     }
 }
