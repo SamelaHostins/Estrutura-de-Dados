@@ -16,6 +16,45 @@ public class Arvore<T> {
         return vazia() ? null : getRaiz().pertence(info);
     }
 
+    public String caminho(T procurado) {
+        NoArvore<T> no = pertence(procurado);
+        if (vazia() || no == null) {
+            return null;
+        }
+        if (getRaiz().getInfo() == procurado) {
+            return getRaiz().getInfo().toString();
+        } else {
+            return acharCaminho(getRaiz(), procurado);
+        }
+    }
+
+    // buscará o caminho da raiz até o nó procurado
+    private String acharCaminho(NoArvore<T> no, T procurado) {
+
+        if (no == null) {
+            return "";
+        }
+
+        if (no.getInfo().equals(procurado)) {
+            return no.getInfo().toString();
+        }
+
+        String caminho = "";
+        NoArvore<T> filho = no.getFilho();
+        while (filho != null) {
+            caminho = acharCaminho(filho, procurado);
+
+            if (!caminho.isEmpty()) {
+                caminho = no.getInfo() + "; " + caminho;
+                break;
+            }
+
+            filho = filho.getIrmao();
+        }
+
+        return caminho;
+    }
+
     public boolean vazia() {
         return (this.raiz == null);
     }
@@ -176,8 +215,7 @@ public class Arvore<T> {
 
     @Override
     public String toString() {
-        return vazia() ?
-                "<>" : getRaiz().imprimePre();
+        return vazia() ? "<>" : getRaiz().imprimePre();
     }
 
 }
