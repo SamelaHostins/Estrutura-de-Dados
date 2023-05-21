@@ -1,16 +1,17 @@
 package arvores;
 
-import static org.junit.jupiter.api.Assertions.*;
-import org.junit.Rule;
+import arvores.model.Arvore.Arvore;
+import arvores.model.Arvore.NoArvore;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import org.junit.rules.Timeout;
 
-import arvores.model.Arvore.Arvore;
-import arvores.model.Arvore.NoArvore;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 /*
- * @author Marcel
+ *  @authorGABRIEL CARDOSO DE SOUZA && SÂMELA HOSTINS
  */
 
 public class ArvoreTest {
@@ -643,7 +644,7 @@ public class ArvoreTest {
 
 	/*
 	 * testes de balanceamento - isBalanceada()
-	 * 
+	 *
 	 */
 	@Test
 	public void testBalanceada1() {
