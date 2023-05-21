@@ -1,5 +1,8 @@
 package arvores.model.Arvore;
 
+/*
+ *  @author GABRIEL CARDOSO DE SOUZA && SÂMELA HOSTINS
+ */
 public class NoArvore<T> {
     private T info;
     private NoArvore<T> filho;
@@ -45,6 +48,35 @@ public class NoArvore<T> {
         }
     }
 
+    protected int getNivelNo(T info, int alturaCorrente) {
+        if (this.info.equals(info)) {
+            alturaCorrente++;
+        } else {
+            // auxilia na verificação quando encontra o no, se encontrou o no, apenas retorna somando os niveis.
+            int aux;
+
+            if (this.getFilho() != null) {
+                aux = this.getFilho().getNivelNo(info, alturaCorrente);
+                if (aux != alturaCorrente) {
+                    alturaCorrente = aux;
+                    // incrementa somente quando é filho, quando é irmão só retorna o valor,
+                    // porque irmão é do mesmo nivel, e não um nivel acima
+                    return alturaCorrente +1;
+                }
+            }
+
+            if ( this.getIrmao() != null) {
+                aux = this.getIrmao().getNivelNo(info, alturaCorrente);
+                if (aux != alturaCorrente) {
+                    alturaCorrente = aux;
+                    return alturaCorrente;
+                }
+            }
+            return alturaCorrente;
+        }
+        return alturaCorrente;
+    }
+
     public NoArvore<T> getFilho() {
         return filho;
     }
@@ -68,5 +100,4 @@ public class NoArvore<T> {
     public void setInfo(T info) {
         this.info = info;
     }
-
 }

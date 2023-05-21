@@ -43,8 +43,10 @@ public class TestandoArvores {
         System.out.println(" O nível de CC deve ser 4: " + nivel);
         // NoArvore<String> pai = a.getPai("XX");
         // System.out.println(" O pai de XX, deve ser M: " + pai.getInfo());
+
         int m = a.menorAltura();
         System.out.println(" A ALTURA DA MENOR SUBARVORE " + m);
+
         boolean isBalanceada = a.isBalanceada();
         System.out.println("Não deve estar balanceada: " + isBalanceada);
         int b = a.getAltura();
