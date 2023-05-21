@@ -52,23 +52,6 @@ public class Arvore<T> {
         return menorNo + 1;
     }
 
-    // public int getNivel(T info) {
-    // NoArvore<T> noPassado = this.pertence(info); // para verificar se existe o
-    // valor
-    // if (noPassado.getInfo() == getRaiz().getInfo()) {
-    // return 0;
-    // } else {
-    // int contador = 0;
-    // NoArvore<T> filhoAtual = getRaiz().getFilho();
-    // while (filhoAtual != null) {
-    // contador++;
-    // filhoAtual = filhoAtual.getFilho();
-    // }
-    // // int resposta = (alturaDoNoPassado - contador);
-    // return 0;
-    // }
-    // }
-
     public NoArvore<T> getPai(NoArvore<T> no) {
         return encontraPai(getRaiz(), no);
     }
@@ -176,8 +159,7 @@ public class Arvore<T> {
 
     @Override
     public String toString() {
-        return vazia() ?
-                "<>" : getRaiz().imprimePre();
+        return vazia() ? "<>" : getRaiz().imprimePre();
     }
 
 }
