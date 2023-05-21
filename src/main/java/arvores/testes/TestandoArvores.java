@@ -99,17 +99,19 @@ public class TestandoArvores {
         n1.inserirFilho(n6);
         n1.inserirFilho(n7);
         n2.inserirFilho(n3);
+        n2.inserirFilho(n5);
         n3.inserirFilho(n4);
         n3.inserirFilho(n4);
         n7.inserirFilho(n8);
         n7.inserirFilho(n9);
         n9.inserirFilho(n10);
-        NoArvore<Integer> no2 = a5.pertence(12);
-        System.out.println(no2);
-        // NoArvore<Integer> no = a5.pertence(2);
-        // System.out.println(no.getInfo());
-        // a5.caminho(5);
-        // int grauArvore = a5.getGrau();
-        // System.out.println("O grau da árvore é: " + grauArvore);
+        String caminho = a5.caminho(5);
+        System.out.println("O caminho até 5 é: " + caminho);
+        int grauArvore = a5.getGrau();
+        System.out.println("O grau da árvore é: " + grauArvore);
+        int grauDoNo = a5.getGrauDoNo(1);
+        System.out.println("O grau do nó 1 deve ser 3: " + grauDoNo);
+        int grauDoNo2 = a5.getGrauDoNo(9);
+        System.out.println("O grau do nó 9 deve ser 1: " + grauDoNo2);
     }
 }

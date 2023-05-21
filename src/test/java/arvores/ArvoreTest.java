@@ -927,5 +927,4 @@ public class ArvoreTest {
 		NoArvore<Integer> resultado = a.pertence(5);
 		assertNull(resultado);
 	}
-
 }
