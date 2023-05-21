@@ -31,22 +31,18 @@ public class NoArvore<T> {
     }
 
     public NoArvore<T> pertence(T info) {
-        if (getInfo().equals(info)) {
+        if (this.info.equals(info)) {
             return this;
-        }
-
-        NoArvore<T> noEncontrado = null;
-
-        NoArvore<T> filho = getFilho();
-        while (filho != null) {
-            noEncontrado = filho.pertence(info);
-            if (noEncontrado != null) {
-                return noEncontrado;
+        } else {
+            NoArvore<T> no = null;
+            if (this.getFilho() != null) {
+                no = this.getFilho().pertence(info);
             }
-            filho = filho.getIrmao();
+            if (no == null && this.getIrmao() != null) {
+                no = this.getIrmao().pertence(info);
+            }
+            return no;
         }
-
-        return null;
     }
 
     public NoArvore<T> getFilho() {
