@@ -99,13 +99,14 @@ public class TestandoArvores {
         n1.inserirFilho(n6);
         n1.inserirFilho(n7);
         n2.inserirFilho(n3);
-        n2.inserirFilho(n5);
         n3.inserirFilho(n4);
         n3.inserirFilho(n4);
         n7.inserirFilho(n8);
         n7.inserirFilho(n9);
         n9.inserirFilho(n10);
-        String caminhoA5 = a5.caminho(4);
-        System.out.println("Caminho de 5: " + caminhoA5);
+        a5.pertence(2);
+        // a5.caminho(5);
+        // int grauArvore = a5.getGrau();
+        // System.out.println("O grau da árvore é: " + grauArvore);
     }
 }

@@ -17,14 +17,18 @@ public class Arvore<T> {
     }
 
     public String caminho(T procurado) {
-        NoArvore<T> no = pertence(procurado);
-        if (vazia() || no == null) {
+        if (vazia()) {
             return null;
         }
-        if (getRaiz().getInfo() == procurado) {
-            return getRaiz().getInfo().toString();
+        NoArvore<T> noEncontrado = pertence(procurado);
+        if (noEncontrado != null) {
+            if (getRaiz().getInfo() == procurado) {
+                return getRaiz().getInfo().toString();
+            } else {
+                return acharCaminho(getRaiz(), procurado);
+            }
         } else {
-            return acharCaminho(getRaiz(), procurado);
+            return null;
         }
     }
 
@@ -55,6 +59,36 @@ public class Arvore<T> {
         return caminho;
     }
 
+    public int getGrau() {
+        if (vazia()) {
+            return -1;
+        }
+        if (getRaiz().getFilho() == null) {
+            return 1;
+        } else {
+            return acharGrau(getRaiz());
+        }
+    }
+
+    private int acharGrau(NoArvore<T> no) {
+        int grau = 0;
+        NoArvore<T> filho = no.getFilho();
+
+        while (filho != null) {
+            NoArvore<T> irmao = filho;
+            if (filho.getIrmao() == null) {
+                return grau;
+            }
+            while (irmao.getIrmao() != null) {
+                grau++;
+                irmao = irmao.getIrmao();
+            }
+            filho = filho.getFilho();
+        }
+
+        return grau;
+    }
+
     public boolean vazia() {
         return (this.raiz == null);
     }
@@ -65,6 +99,32 @@ public class Arvore<T> {
         } else {
             return altura(getRaiz());
         }
+    }
+
+    public int getGrauDoNo(T valor) {
+        NoArvore<T> no = pertence(valor);
+
+        if (vazia() || no == null) {
+            return -1;
+        }
+
+        return calcularGrauDoNo(no);
+    }
+
+    private int calcularGrauDoNo(NoArvore<T> no) {
+        if (no == null) {
+            return 0;
+        }
+
+        int grau = 0;
+        NoArvore<T> filho = no.getFilho();
+
+        while (filho != null) {
+            grau++;
+            filho = filho.getIrmao();
+        }
+
+        return grau;
     }
 
     /**
