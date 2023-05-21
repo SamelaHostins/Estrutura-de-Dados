@@ -60,6 +60,28 @@ public class Arvore<T> {
         return maiorAltura + 1;
     }
 
+    public NoArvore<T> getPai(NoArvore<T> no) {
+        return encontraPai(getRaiz(), no);
+    }
+
+    private NoArvore<T> encontraPai(NoArvore<T> atual, NoArvore<T> no) {
+
+        NoArvore<T> filho = atual.getFilho();
+
+        while (filho != null) {
+            if (filho == no) {
+                return atual; // O nó procurado é um filho do nó atual
+            }
+            NoArvore<T> pai = encontraPai(filho, no);
+            if (pai != null) {
+                return pai;
+            }
+            filho = filho.getIrmao();
+        }
+
+        return null; // nunca chegará aqui
+    }
+
     // O nível de um nó é definido como a distância entre esse nó e a raiz da árvore
     public int getNivel(T info) {
         if (vazia() || Objects.isNull(this.pertence(info))) {
@@ -116,10 +138,7 @@ public class Arvore<T> {
 
     @Override
     public String toString() {
-        if (this.vazia()) {
-            return "<>";
-        }
-        return raiz.imprimePre();
+        return vazia() ? "<>" : getRaiz().imprimePre();
     }
 
 }

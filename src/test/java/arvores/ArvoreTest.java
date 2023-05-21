@@ -835,4 +835,12 @@ public class ArvoreTest {
 		nota += 0.375;
 	}
 
+	@Test
+	public void testPertence() {
+		System.out.println("testPertence");
+		Arvore<Integer> a = new Arvore<>();
+
+		NoArvore<Integer> resultado = a.pertence(5);
+		assertNull(resultado);
+	}
 }
