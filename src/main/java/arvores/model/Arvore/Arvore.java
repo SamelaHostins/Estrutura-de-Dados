@@ -1,5 +1,7 @@
 package arvores.model.Arvore;
 
+import java.util.Objects;
+
 public class Arvore<T> {
 
     private NoArvore<T> raiz;
@@ -105,13 +107,12 @@ public class Arvore<T> {
     }
 
     public int getGrauDoNo(T valor) {
-        NoArvore<T> no = pertence(valor);
-
-        if (vazia() || no == null) {
+        if (vazia() || Objects.isNull(this.pertence(valor))) {
             return -1;
+        } else {
+            NoArvore<T> no = pertence(valor);
+            return calcularGrauDoNo(no);
         }
-
-        return calcularGrauDoNo(no);
     }
 
     private int calcularGrauDoNo(NoArvore<T> no) {
