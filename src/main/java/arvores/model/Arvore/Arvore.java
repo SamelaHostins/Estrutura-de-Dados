@@ -22,7 +22,7 @@ public class Arvore<T extends Comparable<T>> {
     }
 
     public String caminho(T procurado) {
-        if (vazia()) {
+        if (vazia() || Objects.isNull(this.pertence(procurado))) {
             return null;
         }
         NoArvore<T> noEncontrado = pertence(procurado);
@@ -284,10 +284,12 @@ public class Arvore<T extends Comparable<T>> {
 
     public T getMaiorElemento() {
         if (vazia()) {
-            return null; // Retornar null se a árvore estiver vazia
+            return null;
+        }
+        if (getRaiz().getFilho() == null) {
+            return getRaiz().getInfo();
         } else {
-            T elemento = getRaiz().getInfo();
-            return this.encontrarMaiorElemento(getRaiz(), elemento);
+            return this.maiorElemento(getRaiz());
         }
     }
 
@@ -300,8 +302,23 @@ public class Arvore<T extends Comparable<T>> {
             }
             filho = filho.getIrmao();
         }
-        
+
         return elemento;
     }
 
+    public T maiorElemento(NoArvore<T> no) {
+        T elemento = no.getInfo();
+        NoArvore<T> filho = no.getFilho();
+
+        if (filho.getInfo().compareTo(elemento) > 0) {
+            elemento = filho.getInfo();
+        }
+
+        while (filho != null) {
+            encontrarMaiorElemento(filho, elemento);
+            filho = filho.getIrmao();
+        }
+
+        return elemento;
+    }
 }
