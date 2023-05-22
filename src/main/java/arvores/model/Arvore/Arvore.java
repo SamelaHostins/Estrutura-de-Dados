@@ -155,23 +155,6 @@ public class Arvore<T extends Comparable<T>> {
         return menorNo + 1;
     }
 
-    // public int getNivel(T info) {
-    // NoArvore<T> noPassado = this.pertence(info); // para verificar se existe o
-    // valor
-    // if (noPassado.getInfo() == getRaiz().getInfo()) {
-    // return 0;
-    // } else {
-    // int contador = 0;
-    // NoArvore<T> filhoAtual = getRaiz().getFilho();
-    // while (filhoAtual != null) {
-    // contador++;
-    // filhoAtual = filhoAtual.getFilho();
-    // }
-    // // int resposta = (alturaDoNoPassado - contador);
-    // return 0;
-    // }
-    // }
-
     public NoArvore<T> getPai(NoArvore<T> no) {
         return encontraPai(getRaiz(), no);
     }
@@ -293,12 +276,14 @@ public class Arvore<T extends Comparable<T>> {
         }
     }
 
-    private T encontrarMaiorElemento(NoArvore<T> no, T elemento) {
+    public T maiorElemento(NoArvore<T> no) {
+        T elemento = no.getInfo();
         NoArvore<T> filho = no.getFilho();
+
         while (filho != null) {
-            T maiorFilho = encontrarMaiorElemento(filho, elemento);
-            if (maiorFilho.compareTo(elemento) > 0) {
-                elemento = maiorFilho;
+            T maiorElemento = maiorElemento(filho);
+            if (maiorElemento.compareTo(elemento) > 0) {
+                elemento = maiorElemento;
             }
             filho = filho.getIrmao();
         }
@@ -306,19 +291,53 @@ public class Arvore<T extends Comparable<T>> {
         return elemento;
     }
 
-    public T maiorElemento(NoArvore<T> no) {
+    public T getMenorElemento() {
+        if (vazia()) {
+            return null;
+        }
+        if (getRaiz().getFilho() == null) {
+            return getRaiz().getInfo();
+        } else {
+            return this.menorElemento(getRaiz());
+        }
+    }
+
+    public T menorElemento(NoArvore<T> no) {
         T elemento = no.getInfo();
         NoArvore<T> filho = no.getFilho();
 
-        if (filho.getInfo().compareTo(elemento) > 0) {
-            elemento = filho.getInfo();
-        }
-
         while (filho != null) {
-            encontrarMaiorElemento(filho, elemento);
+            T menorElemento = menorElemento(filho);
+            if (menorElemento.compareTo(elemento) < 0) {
+                elemento = menorElemento;
+            }
             filho = filho.getIrmao();
         }
 
         return elemento;
     }
+
+    public int contarRepeticoes(T info) {
+        if (vazia() || Objects.isNull(this.pertence(info))) {
+            return -1;
+        } else {
+            return buscarRepeticao(getRaiz(), info);
+        }
+    }
+
+    private int buscarRepeticao(NoArvore<T> no, T info) {
+        T valor = info;
+        int contador = 0;
+        if (no.getInfo().equals(info)) {
+            contador++;
+        }
+
+        NoArvore<T> filho = no.getFilho();
+        while (filho != null) {
+            contador += buscarRepeticao(filho, valor);
+            filho = filho.getIrmao();
+        }
+        return contador;
+    }
+
 }

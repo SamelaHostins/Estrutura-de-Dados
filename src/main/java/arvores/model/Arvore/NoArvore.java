@@ -25,6 +25,39 @@ public class NoArvore<T> {
         return result;
     }
 
+    public String imprimeEmOrdem() {
+        String result = "";
+
+        NoArvore<T> filho = this.getFilho();
+        if (filho != null) {
+            result += filho.imprimeEmOrdem();
+        }
+
+        result += this.info.toString() + " ";
+
+        NoArvore<T> irmao = this.getIrmao();
+        while (irmao != null) {
+            result += irmao.imprimeEmOrdem();
+            irmao = irmao.getIrmao();
+        }
+
+        return result;
+    }
+
+    public String imprimePosOrdem() {
+        String result = "";
+
+        NoArvore<T> filho = this.getFilho();
+        while (filho != null) {
+            result += filho.imprimePosOrdem();
+            filho = filho.getIrmao();
+        }
+
+        result += this.info.toString() + " ";
+
+        return result;
+    }
+
     public void inserirFilho(NoArvore<T> filho) {
         filho.setIrmao(this.getFilho());
         this.filho = filho;
