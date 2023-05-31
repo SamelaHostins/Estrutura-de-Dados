@@ -37,7 +37,7 @@ public class ListaEncadeada<T> implements Lista<T> {
 	@Override
 	public void inserir(T valor) {
 		// inserção ao final da lista
-		NoLista<T> novo = new NoLista();
+		NoLista<T> novo = new NoLista<T>();
 		novo.setInfo(valor);
 
 		if (this.estaVazia()) {

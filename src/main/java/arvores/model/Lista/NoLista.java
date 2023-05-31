@@ -4,14 +4,7 @@ public class NoLista<T> {
 
 	private T info;
 	private NoLista<T> proximo;
-	private NoLista<T> anterior;
 	
-	public NoLista<T> getAnterior() {
-		return anterior;
-	}
-	public void setAnterior(NoLista<T> anterior) {
-		this.anterior = anterior;
-	}
 	public T getInfo() {
 		return info;
 	}

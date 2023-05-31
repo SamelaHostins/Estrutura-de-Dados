@@ -10,19 +10,15 @@ public class NoArvore<T> {
     }
 
     public String imprimePre() {
-        String result = "<" + this.info.toString();
-
-        if (this.getFilho() != null) {
-            result += filho.imprimePre();
+        String string = "<" + getInfo().toString();
+        if (getFilho() != null) {
+            string += getFilho().imprimePre();
         }
-
-        result += ">";
-
-        if (this.getIrmao() != null) {
-            result += irmao.imprimePre();
+        string += ">";
+        if (getIrmao() != null) {
+            string += getIrmao().imprimePre();
         }
-
-        return result;
+        return string;
     }
 
     public String imprimeEmOrdem() {
@@ -102,4 +98,11 @@ public class NoArvore<T> {
         this.info = info;
     }
 
+    protected NoArvore<T> identificarUnicoFilho() {
+        if (this.getFilho() != null) {
+            return (NoArvore<T>) this.getFilho();
+        } else {
+            return (NoArvore<T>) this.getFilho().getIrmao();
+        }
+    }
 }
