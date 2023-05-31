@@ -1,12 +1,17 @@
 package arvores.model.Lista;
+// lembrar de tirar os pacotes
+//Não utilize pacotes, ou seja, deixe todas as suas classes no pacote default
 
 public class MapaDispersao<K, T> {
+
     private ListaEncadeada<MapaDispersaoItem<K, T>>[] tabela;
 
     public MapaDispersao(int quantidade) {
         this.tabela = new ListaEncadeada[quantidade * 2];
     }
 
+    // precisa garantir que o valor será positivo (aqui não garante)
+    // também precisa ver do número primo
     private int calcularHash(K chave) {
         return Math.floorMod(chave.hashCode(), tabela.length);
     }
