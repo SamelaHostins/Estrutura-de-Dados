@@ -45,7 +45,7 @@ public class ListaEncadeada<K, T> {
 		return -1;
 	}
 
-	public int buscarPorChave(K chave) {
+	public int buscarChave(K chave) {
 		int posicao = 0;
 		NoLista<K, T> p = primeiro;
 
@@ -59,7 +59,7 @@ public class ListaEncadeada<K, T> {
 		return -1;
 	}
 
-	public NoLista<K, T> pegarPorChave(K chave) {
+	public NoLista<K, T> pegarChave(K chave) {
 		NoLista<K, T> p = primeiro;
 		while (p != null) {
 			if (p.getChave().equals(chave)) {
@@ -92,7 +92,7 @@ public class ListaEncadeada<K, T> {
 		}
 	}
 
-	public NoLista<K, T> retirarPorChave(K chave) {
+	public NoLista<K, T> retirarChave(K chave) {
 		NoLista<K, T> anterior = null;
 		NoLista<K, T> p = primeiro;
 

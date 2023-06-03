@@ -48,7 +48,7 @@ public class MapaDispersao<K, T> {
         }
 
         // para verificar se já existe algum elemento com a mesma chave
-        if (tabela[indice].buscarPorChave(chave) == -1) {
+        if (tabela[indice].buscarChave(chave) == -1) {
             tabela[indice].inserir(chave, info);
             tamanhoMapa++;
             return true;
@@ -61,11 +61,11 @@ public class MapaDispersao<K, T> {
         int indice = this.calcularHash(chave);
 
         if (this.tabela[indice] != null) {
-            int posicaoObjeto = this.tabela[indice].buscarPorChave(chave);
+            int posicaoObjeto = this.tabela[indice].buscarChave(chave);
 
             if (posicaoObjeto != -1) {
                 this.tamanhoMapa--;
-                return this.tabela[indice].retirarPorChave(chave).getInfo();
+                return this.tabela[indice].retirarChave(chave).getInfo();
             }
         }
         return null;
@@ -75,7 +75,7 @@ public class MapaDispersao<K, T> {
         int indice = this.calcularHash(chave);
 
         if (this.tabela[indice] != null) {
-            return this.tabela[indice].pegarPorChave(chave).getInfo();
+            return this.tabela[indice].pegarChave(chave).getInfo();
         }
 
         return null;
