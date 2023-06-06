@@ -36,7 +36,7 @@ public class Principal {
 		v2.setPlaca("OKX-1345");
 		v2.setModelo("Fusca");
 		v2.setAno(1980);
-		v2.setProprietario("Ana Maria");
+		v2.setProprietario("Ana Eduarda");
 
 		System.out.println("Inserindo carro placa \"OKX-1345\": " + mp.inserir(v2.getPlaca(), v2));
 
@@ -63,7 +63,7 @@ public class Principal {
 		v4.setPlaca("XYZ-4567");
 		v4.setModelo("Ranger");
 		v4.setAno(2020);
-		v4.setProprietario("Maria Eduarda");
+		v4.setProprietario("Emily Ceron");
 
 		System.out.println("Removendo carro placa \"AAA-0123\"");
 		System.out.println("Objeto retornado: " + mp.remover(v.getPlaca()));
