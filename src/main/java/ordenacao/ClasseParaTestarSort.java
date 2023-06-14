@@ -1,4 +1,4 @@
-package view;
+package ordenacao;
 
 import java.time.LocalDate;
 import java.util.Arrays;
