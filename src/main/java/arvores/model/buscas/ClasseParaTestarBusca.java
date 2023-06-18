@@ -1,4 +1,4 @@
-package buscas;
+package arvores.model.buscas;
 
 import java.time.LocalDate;
 import java.util.Arrays;

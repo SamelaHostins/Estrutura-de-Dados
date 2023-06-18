@@ -1,7 +1,6 @@
 package mapas;
 
 import java.math.BigInteger;
-import java.util.Arrays;
 
 /*
  * ALUNA: Sâmela Hostins
@@ -21,21 +20,38 @@ public class MapaDispersao<K, T> {
 	}
 
 	private int hashDuplo(K chave) {
-		int hash = chave.hashCode();
-		int passo = 1 + (hash % (tabela.length - 2));
-		return passo;
+		// passo = (chave % 7) + 1
+		return ((chave.hashCode() & 0x7fffffff) % 7) + 1;
 	}
 
 	public boolean inserir(K chave, T valor) {
-		int posicao = buscarPosicaoDoVetorPelaChave(chave);
-		if (tabela[posicao] != null) {
-			return false;
+		int index = calcularHash(chave);
+
+		T objeto = this.buscar(chave);
+		if (tabela[index] == null) { // se posi��o estiver vazia, guarda o par<chave,valor>
+			if (objeto == null) // se n�o encontrou nada, pode inserir
+			{
+				ObjetoMapa<K, T> om = new ObjetoMapa<K, T>();
+				om.setChave(chave);
+				om.setValor(valor);
+				tabela[index] = om;
+				return true;
+			} else {
+				return false;
+			}
+		} else { // j� possui um objeto na posi��o (colis�o)
+			if (objeto == null) // se o objeto nao existe na tabela
+			{
+				ObjetoMapa<K, T> om = new ObjetoMapa<K, T>();
+				om.setChave(chave);
+				om.setValor(valor);
+				tabela[this.hashDuplo(chave)] = om;
+				return true;
+			} else {
+				return false;
+			}
 		}
-		ObjetoMapa<K, T> novoObjeto = new ObjetoMapa<>();
-		novoObjeto.setChave(chave);
-		novoObjeto.setValor(valor);
-		tabela[posicao] = novoObjeto;
-		return true;
+
 	}
 
 	public int buscarPosicaoDoVetorPelaChave(K chave) {
@@ -76,5 +92,24 @@ public class MapaDispersao<K, T> {
 				System.out.println("Posição " + i + ": Vazio");
 			}
 		}
+	}
+
+	public boolean verificarFatorCarga() {
+		double fatorCarga = (double) this.size() / this.tabela.length;
+		if (fatorCarga == 0.5) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+
+	public int size() {
+		int count = 0;
+		for (ObjetoMapa<K, T> objeto : tabela) {
+			if (objeto != null) {
+				count++;
+			}
+		}
+		return count;
 	}
 }
