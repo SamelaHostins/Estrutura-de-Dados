@@ -8,7 +8,7 @@
             "type": "java",
             "name": "Principal",
             "request": "launch",
-            "mainClass": "arvores.model.Mapa.Principal",
+            "mainClass": "model.Mapa.Principal",
             "projectName": "demo"
         },
         {
@@ -21,21 +21,21 @@
             "type": "java",
             "name": "TestandoArvoreBST",
             "request": "launch",
-            "mainClass": "arvores.testes.TestandoArvoreBST",
+            "mainClass": "testes.TestandoArvoreBST",
             "projectName": "demo"
         },
         {
             "type": "java",
             "name": "TestandoArvoreBinaria",
             "request": "launch",
-            "mainClass": "arvores.testes.TestandoArvoreBinaria",
+            "mainClass": "testes.TestandoArvoreBinaria",
             "projectName": "demo"
         },
         {
             "type": "java",
             "name": "TestandoArvores",
             "request": "launch",
-            "mainClass": "arvores.testes.TestandoArvores",
+            "mainClass": "testes.TestandoArvores",
             "projectName": "demo"
         }
     ]

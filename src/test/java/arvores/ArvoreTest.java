@@ -1,7 +1,7 @@
 package arvores;
 
-import arvores.model.Arvore.Arvore;
-import arvores.model.Arvore.NoArvore;
+import model.Arvore.Arvore;
+import model.Arvore.NoArvore;
 import org.junit.jupiter.api.AfterAll;
 import org.junit.jupiter.api.Test;
 import org.junit.rules.Timeout;

@@ -1,6 +1,6 @@
 package arvores;
 
-import arvores.model.Calculadora.Calculadora;
+import model.Calculadora.Calculadora;
 
 public class TesteCalculadora 
 {
